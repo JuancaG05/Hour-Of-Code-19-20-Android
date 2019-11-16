@@ -1,7 +1,9 @@
-package inf.uva.es.hourofcode1020;
+package inf.uva.es.hourofcode1020.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import inf.uva.es.hourofcode1020.R;
 
 public class MainActivity extends AppCompatActivity {
 
