@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">HourOfCode1020</string>
+    <string name="tv_numero1">Número 1:</string>
+    <string name="tv_numero2">Número 2:</string>
+    <string name="tv_resultado">Resultado de la operación:</string>
+    <string name="et_introduzcaNumero">Introduzca un número</string>
+    <string name="toast_noOperando">Debe introducir un número</string>
+    <string name="dialog_message">¿Limpiar texto?</string>
+    <string name="dialog_possitiveButton">Sí</string>
+    <string name="dialog_negativeButton">No</string>
+    <string name="dialog_title">Resultado de la operación</string>
 </resources>

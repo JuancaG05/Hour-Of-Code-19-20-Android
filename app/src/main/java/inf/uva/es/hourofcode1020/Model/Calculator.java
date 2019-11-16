@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
  *
  * @author Ivan Gonzalez Rincon.
  * @author Manuel Mendez Calvo.
- * @author David.
+ * @author David Melendez Diez.
  */
 public class Calculator {
 
@@ -26,6 +26,22 @@ public class Calculator {
         result = Double.NaN;
         decimalFormat = new DecimalFormat(format);
 
+    }
+
+    public double sumar(double a, double b) {
+        return a + b;
+    }
+
+    public double restar(double a, double b) {
+        return a - b;
+    }
+
+    public double multiplicar(double a, double b) {
+        return a * b;
+    }
+
+    public double dividir(double a, double b) {
+        return a / b;
     }
 
     /**
