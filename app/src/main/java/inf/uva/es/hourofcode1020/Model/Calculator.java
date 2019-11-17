@@ -28,20 +28,57 @@ public class Calculator {
 
     }
 
+    /**
+     * Funcion para realizar la suma de dos numeros.
+     *
+     * @param a Primer numero para realizar la operacion.
+     * @param b Segundo numero para realizar la operacion.
+     * @return Suma de a + b.
+     */
     public double sumar(double a, double b) {
         return a + b;
     }
 
+    /**
+     * Funcion para realizar la resta de dos numeros.
+     *
+     * @param a Primer numero para realizar la operacion.
+     * @param b Segundo numero para realizar la operacion.
+     * @return Resta de a - b.
+     */
     public double restar(double a, double b) {
         return a - b;
     }
 
+    /**
+     * Funcion para realizar la multiplicacion de dos numeros.
+     *
+     * @param a Primer numero para realizar la operacion.
+     * @param b Segundo numero para realizar la operacion.
+     * @return Suma de a * b.
+     */
     public double multiplicar(double a, double b) {
         return a * b;
     }
 
+    /**
+     * Funcion para realizar la division de dos numeros.
+     *
+     * @param a Primer numero para realizar la operacion.
+     * @param b Segundo numero para realizar la operacion.
+     * @return Suma de a / b.
+     */
     public double dividir(double a, double b) {
         return a / b;
+    }
+
+    /**
+     * Funcion para parsear un numero decimal
+     * @param result Decimal a formatear
+     * @return Decimal formateado.
+     */
+    public double parseResult(double result) {
+        return Double.parseDouble(getDecimalFormat().format(result));
     }
 
     /**

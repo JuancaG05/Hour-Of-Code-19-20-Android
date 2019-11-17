@@ -21,7 +21,14 @@ import inf.uva.es.hourofcode1020.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-
+/**
+ * Activity principal usada para el taller de Android impartido en la Escuela de Ingenieria Informatica de Valladolid,
+ * como parte del evento Hour Of Code del curso 19/20.
+ *
+ * @author Ivan Gonzalez Rincon.
+ * @author Manuel Mendez Calvo.
+ * @author David Melendez Diez.
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText et_number1, et_number2;
@@ -40,9 +47,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setActivity();
 
-
     }
 
+    /**
+     * Este metodo enlaza todos los elementos graficos con el .xml de la interfaz.
+     */
     private void setActivity() {
         et_number1 = (EditText) findViewById(R.id.et_operando1);
         et_number2 = (EditText) findViewById(R.id.et_operando2);
@@ -61,12 +70,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         calculator = new Calculator();
     }
 
+    /**
+     * Funcion que comprueba si se puede realizar la operacion en la calculadora
+     *
+     * @return true en caso de poderse hacer la operacion. False en caso contrario.
+     */
     private boolean isInfoCorrect() {
         String strNumber1 = et_number1.getText().toString();
         String strNumber2 = et_number2.getText().toString();
 
         boolean isCorrect = true;
+        //Comprueba si los valores del modelo han sido modificados, pues solo son NaN en caso de haber reseteado la calculadora.
         if (calculator.getA() != Double.NaN && calculator.getB() != Double.NaN) {
+            //Se comprueba si el usuario ha introducido informacion para poder realizar la operacion
             if (!"".equals(strNumber1) && null != strNumber1) {
                 number1 = Double.parseDouble(strNumber1);
                 calculator.setA(number1);
@@ -89,10 +105,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void setResult() {
+    /**
+     * Metodo que modifica el TextView del resultado de la calculadora.
+     */
+    private void setResultView() {
         tv_resultado.setText(tv_resultado.getText().toString() + resultado);
     }
 
+    /**
+     * Metodo que crea un dialogo dentro de nuestro Activity.
+     * @param context Contexto del Activity.
+     * @param result Resultado de la operacion realizada.
+     */
     private void createDialog(Context context, double result) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);
@@ -102,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // set dialog message
         alertDialogBuilder
-                .setMessage(context.getString(R.string.dialog_message) + "\nResultado de la operación:"+String.valueOf(result))
+                .setMessage(context.getString(R.string.dialog_message) + "\nResultado de la operación:" + String.valueOf(result))
                 .setCancelable(false)
                 .setPositiveButton(context.getString(R.string.dialog_possitiveButton), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -138,27 +162,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             tv_resultado.setText("");
             switch (id) {
                 case R.id.btn_sumar:
-                    resultado = Double.parseDouble(calculator.getDecimalFormat().format(calculator.sumar(number1, number2)));
-                    calculator.setResult(resultado);
-                    setResult();
+                    resultado = calculator.sumar(number1, number2);
                     break;
                 case R.id.btn_restar:
-                    resultado = Double.parseDouble(calculator.getDecimalFormat().format(calculator.restar(number1, number2)));
-                    calculator.setResult(resultado);
-                    setResult();
+                    resultado = calculator.restar(number1, number2);
                     break;
                 case R.id.btn_multiplicar:
-                    resultado = Double.parseDouble(calculator.getDecimalFormat().format(calculator.multiplicar(number1, number2)));
-                    calculator.setResult(resultado);
-                    setResult();
+                    resultado = calculator.multiplicar(number1, number2);
                     break;
                 case R.id.btn_dividir:
-                    resultado = Double.parseDouble(calculator.getDecimalFormat().format(calculator.dividir(number1, number2)));
-                    calculator.setResult(resultado);
-                    setResult();
+                    resultado = calculator.dividir(number1, number2);
                     break;
             }
-
+            resultado = calculator.parseResult(resultado);
+            calculator.setResult(resultado);
+            setResultView();
             createDialog(this, calculator.getResult());
             et_number1.requestFocus();
         } else {
