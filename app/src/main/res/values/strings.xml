@@ -9,4 +9,5 @@
     <string name="dialog_possitiveButton">Sí</string>
     <string name="dialog_negativeButton">No</string>
     <string name="dialog_title">Resultado de la operación</string>
+    <string name="divisionPorZero">No se puede dividir por cero</string>
 </resources>

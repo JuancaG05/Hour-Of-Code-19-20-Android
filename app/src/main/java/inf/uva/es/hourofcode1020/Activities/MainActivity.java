@@ -114,8 +114,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * Metodo que crea un dialogo dentro de nuestro Activity.
+     *
      * @param context Contexto del Activity.
-     * @param result Resultado de la operacion realizada.
+     * @param result  Resultado de la operacion realizada.
      */
     private void createDialog(Context context, double result) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
@@ -171,7 +172,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     resultado = calculator.multiplicar(number1, number2);
                     break;
                 case R.id.btn_dividir:
-                    resultado = calculator.dividir(number1, number2);
+                    if (number2 == 0) {
+                        Toast.makeText(MainActivity.this, R.string.divisionPorZero, Toast.LENGTH_SHORT).show();
+                    } else {
+                        resultado = calculator.dividir(number1, number2);
+                    }
                     break;
             }
             resultado = calculator.parseResult(resultado);
